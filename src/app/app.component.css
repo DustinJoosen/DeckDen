@@ -1,0 +1,159 @@
+.bar {
+  width: 100%;
+  height: 40px;
+  background-color: lightsalmon;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 5;
+}
+
+
+.left_panels, .right_panels {
+  width: 37.5%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-right: 10px;
+}
+
+.right_panels mat-icon, .left_panels mat-icon {
+  background-color: rgba(220, 220, 220, 0.3);
+  transition: 500ms;
+  margin: 3px;
+  padding: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.right_panels mat-icon.selected, .left_panels mat-icon.selected,
+.right_panels mat-icon:hover, .left_panels mat-icon:hover {
+  background-color: rgba(220, 220, 220, 0.8);
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  width: 25%
+}
+
+.right_panels {
+  justify-content: start;
+}
+
+#progress_bar {
+  margin-top: -5px;
+  width: 100%;
+}
+
+.obtained_bar,
+.type_bar,
+.location_bar,
+.search_bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  transition: 300ms;
+}
+.search_bar input {
+  border-bottom: 2px solid salmon;
+  padding: 3px;
+  display: block;
+  width: 100%;
+  height: 30px;
+  background-color: white;
+  outline: none;
+}
+
+.obtained_bar {
+  display: flex;
+  justify-content: center;
+}
+.obtained_bar button {
+  padding: 5px;
+  margin: 3px 3px 0;
+  width: auto;
+  border: 0;
+  box-shadow: 1px 1px 10px gray;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+@media (max-width: 400px) {
+  .obtained_bar {
+    bottom: -50px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .obtained_bar button {
+    width: 100%;
+    margin: 2px;
+  }
+  .location_bar,
+  .type_bar {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
+
+.obtained_bar .selected {
+  background-color: rgb(220, 220, 220);
+}
+
+.obtained_bar_visible,
+.type_bar_visible,
+.location_bar_visible,
+.search_bar_visible {
+  bottom: 40px !important;
+}
+
+.obtained_d_all {
+  background-color: whitesmoke;
+}
+.obtained_d_obtained {
+  background-color: lightgreen;
+}
+.obtained_d_unobtained {
+  background-color: lightcoral;
+}
+
+.location_bar,
+.type_bar {
+  height: 190px;
+  width: 20%;
+  margin-left: 40%;
+  background-color: white;
+  border: 2px solid lightsalmon;
+  border-bottom: none;
+  bottom: -280px;
+  display: flex;
+  justify-content: center;
+}
+.types_middle {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.location_bar .region,
+.type_bar .type {
+  padding: 3px;
+  margin: 5px;
+  text-align: center;
+  box-shadow: 1px 1px 6px gray;
+  color: white;
+  cursor: pointer;
+}
+
+.location_bar .region_selected,
+.type_bar .type_selected {
+  outline: 4px dashed #333;
+}
+
+.location_bar {
+  color: white;
+  width: 10%;
+  height: 160px;
+  margin-left: 42.5%;
+}

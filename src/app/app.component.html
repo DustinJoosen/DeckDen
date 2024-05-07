@@ -1,0 +1,108 @@
+<app-pokemon-list [pokemon]="pokemon" (onRefresh)="refresh()"></app-pokemon-list>
+
+<div class="filter">
+
+  <div class="search_bar" [class.search_bar_visible]="this.searchOpened">
+    <input type="text" id="search_bar_input" placeholder="Pokemon name / Dex" [(ngModel)]="filter.searchText" (ngModelChange)="refresh()">
+  </div>
+
+  <div class="obtained_bar" [class.obtained_bar_visible]="this.obtainedOpened">
+    <button [class.selected]="this.filter.hasObtained === ''" class="obtained_d_all"
+            (click)="this.setObtainedFilter('')">Display all</button>
+    <button [class.selected]="this.filter.hasObtained === 'OBTAINED'" class="obtained_d_obtained"
+            (click)="this.setObtainedFilter('OBTAINED')">Display all obtained</button>
+    <button [class.selected]="this.filter.hasObtained === 'UNOBTAINED'" class="obtained_d_unobtained"
+            (click)="this.setObtainedFilter('UNOBTAINED')">Display all unobtained</button>
+  </div>
+
+  <div class="type_bar" [class.type_bar_visible]="this.typeOpened">
+    <div class="types_left">
+      <div class="type" (click)="this.setType('normal')" [class.type_selected]="this.filter.type == 'normal'"
+           style="background-color: rgb(168, 168, 120)">Normal</div>
+      <div class="type" (click)="this.setType('fire')" [class.type_selected]="this.filter.type == 'fire'"
+           style="background-color: rgb(240, 128, 48)">Fire</div>
+      <div class="type" (click)="this.setType('water')" [class.type_selected]="this.filter.type == 'water'"
+           style="background-color: rgb(104, 144, 240)">Water</div>
+      <div class="type" (click)="this.setType('electric')" [class.type_selected]="this.filter.type == 'electric'"
+           style="background-color: rgb(248, 208, 48)">Electric</div>
+      <div class="type" (click)="this.setType('grass')" [class.type_selected]="this.filter.type == 'grass'"
+           style="background-color: rgb(120, 200, 80)">Grass</div>
+      <div class="type" (click)="this.setType('ice')" [class.type_selected]="this.filter.type == 'ice'"
+           style="background-color: rgb(152, 216, 216)">Ice</div>
+    </div>
+    <div class="types_middle">
+      <div class="type" (click)="this.setType('fighting')" [class.type_selected]="this.filter.type == 'fighting'"
+           style="background-color: rgb(192, 48, 40)">Fighting</div>
+      <div class="type" (click)="this.setType('poison')" [class.type_selected]="this.filter.type == 'poison'"
+           style="background-color: rgb(160, 64, 160)">Poison</div>
+      <div class="type" (click)="this.setType('ground')" [class.type_selected]="this.filter.type == 'ground'"
+           style="background-color: rgb(224, 192, 104)">Ground</div>
+      <div class="type" (click)="this.setType('flying')" [class.type_selected]="this.filter.type == 'flying'"
+           style="background-color: rgb(168, 144, 240)">Flying</div>
+      <div class="type" (click)="this.setType('psychic')" [class.type_selected]="this.filter.type == 'psychic'"
+           style="background-color: rgb(248, 88, 136)">Psychic</div>
+      <div class="type" (click)="this.setType('bug')" [class.type_selected]="this.filter.type == 'bug'"
+           style="background-color: rgb(168, 184, 32)">Bug</div>
+    </div>
+    <div class="types_right">
+      <div class="type" (click)="this.setType('rock')" [class.type_selected]="this.filter.type == 'rock'"
+           style="background-color: rgb(184, 160, 56)">Rock</div>
+      <div class="type" (click)="this.setType('ghost')" [class.type_selected]="this.filter.type == 'ghost'"
+           style="background-color: rgb(112, 88, 152)">Ghost</div>
+      <div class="type" (click)="this.setType('dragon')" [class.type_selected]="this.filter.type == 'dragon'"
+           style="background-color: rgb(112, 56, 248)">Dragon</div>
+      <div class="type" (click)="this.setType('dark')" [class.type_selected]="this.filter.type == 'dark'"
+           style="background-color: rgb(112, 88, 72)">Dark</div>
+      <div class="type" (click)="this.setType('steel')" [class.type_selected]="this.filter.type == 'steel'"
+           style="background-color: rgb(184, 184, 208)">Steel</div>
+      <div class="type" (click)="this.setType('fairy')" [class.type_selected]="this.filter.type == 'fairy'"
+           style="background-color: rgb(240, 182, 188)">Fairy</div>
+    </div>
+  </div>
+
+  <div class="location_bar" [class.location_bar_visible]="this.locationOpened">
+    <div class="locations_left">
+      <div class="region" (click)="this.setRegion('kanto')" [class.region_selected]="this.filter.region == 'kanto'"
+           style="background-color: rgb(237, 88, 84)">Kanto</div>
+      <div class="region" (click)="this.setRegion('johto')" [class.region_selected]="this.filter.region == 'johto'"
+           style="background-color: rgb(253, 185, 39)">Johto</div>
+      <div class="region" (click)="this.setRegion('hoenn')" [class.region_selected]="this.filter.region == 'hoenn'"
+           style="background-color: rgb(68, 154, 196)">Hoenn</div>
+      <div class="region" (click)="this.setRegion('sinnoh')" [class.region_selected]="this.filter.region == 'sinnoh'"
+           style="background-color: rgb(150, 143, 168)">Sinnoh</div>
+      <div class="region" (click)="this.setRegion('unova')" [class.region_selected]="this.filter.region == 'unova'"
+           style="background-color: rgb(43, 87, 151)">Unova</div>
+    </div>
+    <div class="locations_right">
+      <div class="region" (click)="this.setRegion('kalos')" [class.region_selected]="this.filter.region == 'kalos'"
+           style="background-color: rgb(240, 126, 110)">Kalos</div>
+      <div class="region" (click)="this.setRegion('alola')" [class.region_selected]="this.filter.region == 'alola'"
+           style="background-color: rgb(251, 195, 82)">Alola</div>
+      <div class="region" (click)="this.setRegion('galar')" [class.region_selected]="this.filter.region == 'galar'"
+           style="background-color: rgb(40, 53, 147)">Galar</div>
+      <div class="region" (click)="this.setRegion('hisui')" [class.region_selected]="this.filter.region == 'hisui'"
+           style="background-color: rgb(175, 200, 134)">Hisui</div>
+      <div class="region" (click)="this.setRegion('paldea')" [class.region_selected]="this.filter.region == 'paldea'"
+           style="background-color: rgb(234, 120, 179)">Paldea</div>
+    </div>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="left_panels">
+    <mat-icon (click)="toggleTypes()" [class.selected]="this.typeOpened">grass</mat-icon>
+    <mat-icon (click)="toggleLocations()">location_on</mat-icon>
+    <mat-icon (click)="toggleSearch()" [class.selected]="this.searchOpened">search</mat-icon>
+  </div>
+
+  <div class="progress">
+    <span id="progress_text">{{this.totalObtained}} / {{this.totalAmount}}</span>
+    <progress id="progress_bar" [max]="totalAmount" value="{{this.totalObtained}}"></progress>
+  </div>
+
+  <div class="right_panels">
+    <mat-icon (click)="reset()">close</mat-icon>
+    <mat-icon (click)="toggleObtained()" [class.selected]="this.obtainedOpened">visibility</mat-icon>
+    <mat-icon (click)="refresh()">refresh</mat-icon>
+  </div>
+</div>

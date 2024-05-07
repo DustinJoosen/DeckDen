@@ -1,0 +1,8 @@
+
+<div class="pokemon_list">
+  <app-pokemon
+    *ngFor="let pok of pokemon"
+    (onRefresh)="refresh()"
+    [data]="pok">
+  </app-pokemon>
+</div>

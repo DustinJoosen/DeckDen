@@ -1,0 +1,30 @@
+.pokemon {
+  width: 100px;
+  height: 135px;
+  border-radius: 3px;
+  margin: 5px;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 1px 1px 10px gray;
+  opacity: 0.35;
+}
+
+.obtained {
+  opacity: 1;
+}
+
+.pokemon_img {
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+}
+
+.pokemon #pokemon_name {
+  margin: -5px;
+  text-align: center;
+}
+.pokemon #pokemon_num {
+  margin: 4px;
+  text-align: center;
+  font-size: 10px;
+}
