@@ -30,7 +30,7 @@ export class PokemonComponent {
   }
 
   get imageUrl() {
-    return '../../../assets/images/pokemon/' + this.data.dex + '.png';
+    return '../../../DeckDen/assets/images/pokemon/' + this.data.dex + '.png';
     // return '../../../assets/images/pokemon/393.png';
   }
 
