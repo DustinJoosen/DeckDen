@@ -157,3 +157,8 @@
   height: 160px;
   margin-left: 42.5%;
 }
+
+.disabled-reset-btn {
+  opacity: 0.4;
+  cursor: not-allowed !important;
+}

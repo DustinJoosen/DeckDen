@@ -1,4 +1,9 @@
-<app-pokemon-list [pokemon]="pokemon" (onRefresh)="refresh()"></app-pokemon-list>
+<app-pokemon-list
+  [pokemon]="pokemon"
+  (onRefresh)="refresh()"
+  (onAfterTogglingMon)="focusSearch()"
+  (onResetFilter)="reset()"
+></app-pokemon-list>
 
 <div class="filter">
 
@@ -101,7 +106,7 @@
   </div>
 
   <div class="right_panels">
-    <mat-icon (click)="reset()">close</mat-icon>
+    <mat-icon (click)="reset()" [class.disabled-reset-btn]="!this.areThereAnyFilters()">close</mat-icon>
     <mat-icon (click)="toggleObtained()" [class.selected]="this.obtainedOpened">visibility</mat-icon>
     <mat-icon (click)="refresh()">refresh</mat-icon>
   </div>

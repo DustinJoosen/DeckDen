@@ -20,18 +20,22 @@ export class PokemonComponent {
   public data!: Pokemon;
 
   @Output()
+  public onAfterTogglingMon = new EventEmitter();
+
+  @Output()
   public onRefresh = new EventEmitter();
 
   constructor(private dataService: DataService) { }
 
   async toggleObtained() {
     await this.dataService.toggleObtained(this.data.dex);
-    await this.onRefresh.emit()
+    await this.onRefresh.emit();
+    await this.onAfterTogglingMon.emit();
   }
 
   get imageUrl() {
-    return '../../../DeckDen/assets/images/pokemon/' + this.data.dex + '.png';
-    // return '../../../assets/images/pokemon/393.png';
+    // return 'assets/images/pokemon/' + this.data.dex + '.png';
+    return '../../../assets/images/pokemon/393.png';
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="pokemon" [class.obtained]="this.data.obtained" (click)="toggleObtained()">
+<div class="pokemon" [class.obtained]="this.data.obtained" [id]="data.dex" (click)="toggleObtained()">
   <img class="pokemon_img" ngSrc="{{this.imageUrl}}" alt="" width="90" height="90" loading="lazy">
   <p id="pokemon_name">{{this.data.name | titlecase}}</p>
   <p id="pokemon_num">(#{{this.data.dex}})</p>

@@ -1,8 +1,14 @@
-
-<div class="pokemon_list">
+<div class="pokemon_list" [class.single]="pokemon.length == 1">
   <app-pokemon
     *ngFor="let pok of pokemon"
     (onRefresh)="refresh()"
+    (onAfterTogglingMon)="afterToggle()"
     [data]="pok">
   </app-pokemon>
+  <button
+    class="jump-here"
+    *ngIf="pokemon.length == 1"
+    (click)="jumpHere()"
+  >Jump Here</button>
 </div>
+

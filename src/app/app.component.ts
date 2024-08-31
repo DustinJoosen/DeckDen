@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {PokemonComponent} from "./components/pokemon/pokemon.component";
 import {CommonModule, NgOptimizedImage} from "@angular/common";
@@ -34,12 +34,37 @@ export class AppComponent implements OnInit {
   public locationOpened = false;
 
   public filter: Filter = {
+    // searchText: 'pipl'
     // region: 'kanto'
+  }
+
+  areThereAnyFilters(): boolean {
+    return !!(
+      this.filter.searchText ||
+      this.filter.hasObtained ||
+      this.filter.type ||
+      this.filter.region
+    );
+  }
+
+  @HostListener("window:keydown", ["$event"])
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'F' || event.key === 'f') {
+      if (this.searchOpened) {
+        return;
+      }
+      event.preventDefault();
+      this.toggleSearch();
+    }
+    if (event.key === 'Escape') {
+      this.closeAll();
+    }
   }
 
   constructor(private data: DataService) { }
 
   async ngOnInit() {
+    console.log(this.areThereAnyFilters());
     await this.refresh();
 
   }
@@ -100,10 +125,18 @@ export class AppComponent implements OnInit {
   toggleSearch() {
     let searchOpened = this.searchOpened;
     this.closeAll();
-    this.searchOpened = !searchOpened;
 
+    this.searchOpened = !searchOpened;
+    this.focusSearch();
+  }
+
+  focusSearch() {
     if (this.searchOpened) {
-      document.getElementById('search_bar_input')?.focus();
+      let inp = document.getElementById('search_bar_input');
+      if (inp == null)
+        return;
+
+      inp.focus();
     }
   }
 
